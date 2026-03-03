@@ -1,81 +1,121 @@
 :root {
-  color-scheme: light;
-  font-family: Arial, sans-serif;
+  font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  color: #0f172a;
+  background: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #f3f4f6;
-  color: #111827;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #f8fafc, #dbeafe);
 }
 
 .app {
-  max-width: 500px;
-  margin: 1.5rem auto;
+  width: min(960px, 94vw);
+  margin: 1.6rem auto;
   padding: 1rem;
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
   gap: 1rem;
 }
 
-h1 {
+header h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
-.scoreboard {
-  display: flex;
-  align-items: center;
+header p {
+  margin: 0.35rem 0 0;
+  color: #334155;
+}
+
+.panel,
+.canvas-wrap,
+.actions,
+.status {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #bfdbfe;
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+}
+
+.upload-panel {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.upload-label {
+  width: fit-content;
+  padding: 0.45rem 0.8rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 0.55rem;
+  font-weight: 600;
+}
+
+#imageInput {
+  margin-top: 0.35rem;
+}
+
+.tip {
+  margin: 0;
+  color: #475569;
+  font-size: 0.92rem;
+}
+
+.controls-panel {
+  display: grid;
   gap: 0.75rem;
 }
 
-button {
-  border: 1px solid #9ca3af;
-  background: #fff;
-  color: #111827;
-  padding: 0.4rem 0.65rem;
-  border-radius: 0.35rem;
+.control {
+  display: grid;
+  grid-template-columns: 7rem 1fr 2rem;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.canvas-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+#previewCanvas {
+  width: min(100%, 720px);
+  aspect-ratio: 1;
+  border-radius: 0.65rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+}
+
+.actions {
+  display: flex;
+  gap: 0.7rem;
+}
+
+button,
+.upload-label {
   cursor: pointer;
 }
 
+button {
+  border: none;
+  border-radius: 0.55rem;
+  padding: 0.55rem 1rem;
+  background: #1d4ed8;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .status {
-  margin: 0.8rem 0;
-  min-height: 1.2rem;
-}
-
-.board {
-  display: grid;
-  border: 1px solid #9ca3af;
-  background: #fff;
-  width: min(90vw, 420px);
-  aspect-ratio: 1;
-  touch-action: none;
-}
-
-.cell {
-  border: 1px solid #f3f4f6;
-}
-
-.cell.snake {
-  background: #15803d;
-}
-
-.cell.food {
-  background: #dc2626;
-}
-
-.controls {
-  margin-top: 0.8rem;
-  display: grid;
-  justify-items: center;
-  gap: 0.4rem;
-}
-
-.controls-row {
-  display: flex;
-  gap: 0.4rem;
+  margin: 0;
+  color: #1e293b;
 }

@@ -1,32 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Snake</title>
+    <title>照片转卡通形象</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app">
-      <header class="topbar">
-        <h1>Snake</h1>
-        <div class="scoreboard">
-          <span>Score: <strong id="score">0</strong></span>
-          <button id="restartBtn" type="button">Restart</button>
-        </div>
+      <header>
+        <h1>现实照片 → 卡通形象</h1>
+        <p>上传一张真人图片，一键生成卡通风格头像并下载。</p>
       </header>
 
-      <p id="status" class="status">Use arrow keys or WASD to move.</p>
-      <section id="board" class="board" aria-label="Snake game board"></section>
+      <section class="panel upload-panel">
+        <label class="upload-label" for="imageInput">选择照片</label>
+        <input id="imageInput" type="file" accept="image/*" />
+        <p class="tip">建议使用光线充足、人物清晰的正面照片。</p>
+      </section>
 
-      <section class="controls" aria-label="Touch controls">
-        <button data-dir="up" aria-label="Move up">↑</button>
-        <div class="controls-row">
-          <button data-dir="left" aria-label="Move left">←</button>
-          <button data-dir="down" aria-label="Move down">↓</button>
-          <button data-dir="right" aria-label="Move right">→</button>
+      <section class="panel controls-panel" aria-label="卡通参数">
+        <div class="control">
+          <label for="smoothnessRange">平滑强度</label>
+          <input id="smoothnessRange" type="range" min="0" max="8" value="3" />
+          <span id="smoothnessValue">3</span>
+        </div>
+        <div class="control">
+          <label for="colorLevelsRange">色阶数量</label>
+          <input id="colorLevelsRange" type="range" min="3" max="12" value="6" />
+          <span id="colorLevelsValue">6</span>
+        </div>
+        <div class="control">
+          <label for="edgeStrengthRange">线稿强度</label>
+          <input id="edgeStrengthRange" type="range" min="8" max="60" value="28" />
+          <span id="edgeStrengthValue">28</span>
         </div>
       </section>
+
+      <section class="canvas-wrap" aria-label="效果预览">
+        <canvas id="previewCanvas" width="720" height="720"></canvas>
+      </section>
+
+      <section class="actions">
+        <button id="cartoonBtn" type="button">生成卡通</button>
+        <button id="downloadBtn" type="button" disabled>下载图片</button>
+      </section>
+
+      <p id="status" class="status">请先上传一张照片。</p>
     </main>
 
     <script type="module" src="./src/main.js"></script>
